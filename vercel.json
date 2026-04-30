@@ -1,14 +1,9 @@
 {
-  "buildCommand": "cd frontend && yarn install && yarn build",
-  "outputDirectory": "frontend/build",
-  "installCommand": "echo skipping root install",
-  "functions": {
-    "api/index.py": {
-      "runtime": "@vercel/python@4.3.0"
-    }
-  },
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.py" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  "version": 2,
+  "routes": [
+    { "src": "/service-worker.js", "dest": "/frontend/build/service-worker.js" },
+    { "src": "/manifest.json", "dest": "/frontend/build/manifest.json" },
+    { "src": "/static/(.*)", "dest": "/frontend/build/static/$1" },
+    { "src": "/(.*)", "dest": "/frontend/build/index.html" }
   ]
 }
