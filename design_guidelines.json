@@ -1,0 +1,110 @@
+{
+  "theme": "light",
+  "archetype": "4_swiss_high_contrast",
+  "mood": "Authoritative, clear, function-first, professional, reliable.",
+  "typography": {
+    "font_family": {
+      "headings": "IBM Plex Sans",
+      "body": "IBM Plex Sans",
+      "mono": "IBM Plex Mono"
+    },
+    "hierarchy": {
+      "h1": "text-3xl sm:text-4xl font-bold tracking-tight text-slate-900",
+      "h2": "text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900",
+      "h3": "text-xl sm:text-2xl font-medium tracking-tight text-slate-900",
+      "h4": "text-lg sm:text-xl font-medium tracking-tight text-slate-900",
+      "body": "text-base text-slate-600 leading-relaxed",
+      "small": "text-sm text-slate-500",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-slate-500"
+    }
+  },
+  "colors": {
+    "background": "#F8FAFC",
+    "surface": "#FFFFFF",
+    "primary": {
+      "DEFAULT": "#1D4ED8",
+      "hover": "#1E40AF",
+      "foreground": "#FFFFFF"
+    },
+    "neutral": {
+      "50": "#F8FAFC",
+      "100": "#F1F5F9",
+      "200": "#E2E8F0",
+      "300": "#CBD5E1",
+      "400": "#94A3B8",
+      "500": "#64748B",
+      "600": "#475569",
+      "700": "#334155",
+      "800": "#1E293B",
+      "900": "#0F172A"
+    },
+    "states": {
+      "on_time": {
+        "bg": "#ECFDF5",
+        "text": "#047857",
+        "border": "#A7F3D0",
+        "indicator": "#10B981"
+      },
+      "warning": {
+        "bg": "#FEFCE8",
+        "text": "#A16207",
+        "border": "#FEF08A",
+        "indicator": "#EAB308"
+      },
+      "late": {
+        "bg": "#FEF2F2",
+        "text": "#B91C1C",
+        "border": "#FECACA",
+        "indicator": "#EF4444"
+      },
+      "completed": {
+        "bg": "#F1F5F9",
+        "text": "#334155",
+        "border": "#CBD5E1",
+        "indicator": "#64748B"
+      }
+    }
+  },
+  "layout": {
+    "strategy": "control_room_grid",
+    "sidebar": "collapsible left sidebar, 280px expanded, 80px collapsed. Solid background (#FFFFFF) with 1px right border (#E2E8F0).",
+    "topbar": "sticky header, height 64px, z-50, backdrop-blur-xl bg-white/70, 1px bottom border (#E2E8F0).",
+    "main_content": "pt-[64px] min-h-screen bg-[#F8FAFC] p-6 lg:p-8",
+    "dashboard_grid": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+    "card_style": "bg-white border border-slate-200 rounded-md shadow-sm",
+    "spacing_scale": "generous padding for readability (p-6 inside cards)."
+  },
+  "components": {
+    "buttons": "rounded-md, sharp corners (no pill shapes), robust padding (px-4 py-2), clear hover states. Use primary for main action, outline/ghost for secondary.",
+    "badges": "rounded-sm px-2.5 py-0.5 text-xs font-semibold border. Color based on states.",
+    "tables": "Shadcn UI table, full width, left-aligned columns, sticky header if long. Hover effect on rows (hover:bg-slate-50).",
+    "forms": "Shadcn UI forms. Labels text-sm font-medium text-slate-700. Inputs rounded-md border-slate-300 focus:ring-2 focus:ring-primary/20 focus:border-primary.",
+    "dialogs": "Shadcn dialog, backdrop-blur-sm bg-black/40. Modal surface white, rounded-md, shadow-lg, p-6."
+  },
+  "motion": {
+    "transitions": "transition-all duration-200 ease-in-out",
+    "hover_effects": "slight translateY(-1px) on cards, background darken on buttons, color shift on text links.",
+    "sidebar": "transform width duration-300 ease-in-out"
+  },
+  "icons_library": "@phosphor-icons/react",
+  "media": {
+    "login_background": {
+      "url": "https://images.unsplash.com/photo-1774272864432-97dc997432c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZyUyMGFic3RyYWN0JTIwYXJjaGl0ZWN0dXJhbCUyMGRldGFpbHN8ZW58MHx8fHwxNzc3NTc1ODY1fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract modern office building, geometric patterns, use with a heavy slate-900/80 overlay."
+    }
+  },
+  "accessibility": {
+    "focus_rings": "focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2",
+    "contrast": "Ensure APCA contrast ratio. Gray text must be slate-600 minimum on white.",
+    "testing_attributes": "All interactive elements MUST have data-testid attributes (e.g., data-testid='login-submit-button')."
+  },
+  "instructions_to_main_agent": [
+    "Install @phosphor-icons/react and use it for all icons.",
+    "Apply IBM Plex Sans font to the entire project.",
+    "Implement the Layout Shell: Sidebar (collapsible) and Topbar (sticky).",
+    "The Dashboard must use the F-Pattern F-Pattern F-Pattern Information Architecture, placing the most critical 'total trámites' and 'fuera de tiempo' metrics in the top-left.",
+    "Use the 'states' color palette strictly for trámite badges.",
+    "Do NOT use 'Inter' font. Do NOT use soft, rounded UI (keep rounded-md maximum).",
+    "Ensure the login page uses the provided login_background image with a dark overlay to maintain text readability."
+  ]
+}
