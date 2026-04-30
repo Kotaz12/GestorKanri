@@ -1,11 +1,14 @@
 {
-    "version": 2,
-    "routes": [
-        { "src": "/api/(.*)", "dest": "/api/index.py" },
-        { "src": "/service-worker.js", "dest": "/frontend/build/service-worker.js" },
-        { "src": "/manifest.json", "dest": "/frontend/build/manifest.json" },
-        { "src": "/static/(.*)", "dest": "/frontend/build/static/$1" },
-        { "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|ico|txt|json|woff2?))", "dest": "/frontend/build/$1" },
-        { "src": "/(.*)", "dest": "/frontend/build/index.html" }
-    ]
+  "buildCommand": "cd frontend && yarn install && yarn build",
+  "outputDirectory": "frontend/build",
+  "installCommand": "echo skipping root install",
+  "functions": {
+    "api/index.py": {
+      "runtime": "@vercel/python@4.3.0"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.py" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
 }
