@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
             return;
         }
         try {
-            const { data } = await api.get("/auth/me");
+            const { data } = await api.get("/api/auth/me");
             setUser(data);
         } catch {
             setToken(null);
@@ -26,14 +26,14 @@ export function AuthProvider({ children }) {
     }, [loadUser]);
 
     const login = async (email, password) => {
-        const { data } = await api.post("/auth/login", { email, password });
+        const { data } = await api.post("/api/auth/login", { email, password });
         setToken(data.access_token);
         setUser(data.user);
         return data.user;
     };
 
     const register = async (email, password, name) => {
-        const { data } = await api.post("/auth/register", { email, password, name });
+        const { data } = await api.post("/api/auth/register", { email, password, name });
         setToken(data.access_token);
         setUser(data.user);
         return data.user;
@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
 
     const logout = async () => {
         try {
-            await api.post("/auth/logout");
+            await api.post("/api/auth/logout");
         } catch (_) {}
         setToken(null);
         setUser(false);
