@@ -6,6 +6,7 @@ from pathlib import Path
 # En Vercel el working directory es la raíz del repo
 # __file__ = /var/task/api/index.py  →  parent.parent = /var/task
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.append(str(ROOT))
 """BACKEND = ROOT / "backend"
 
 if str(BACKEND) not in sys.path:
