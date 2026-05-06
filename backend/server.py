@@ -36,7 +36,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Gestor Kanri API", lifespan=lifespan)
 
-api = APIRouter(prefix="/api")
+api = APIRouter()
 
 
 @api.get("/")
