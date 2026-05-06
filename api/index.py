@@ -2,6 +2,7 @@
 import os
 import sys
 from pathlib import Path
+from backend.server import app
 
 # En Vercel el working directory es la raíz del repo
 # __file__ = /var/task/api/index.py  →  parent.parent = /var/task
