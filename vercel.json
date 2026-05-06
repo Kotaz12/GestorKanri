@@ -1,9 +1,9 @@
 {
   "version": 2,
   "routes": [
-    { "src": "/service-worker.js", "dest": "build/service-worker.js" },
-    { "src": "/manifest.json", "dest": "build/manifest.json" },
-    { "src": "/static/(.*)", "dest": "build/static/$1" },
-    { "src": "/(.*)", "dest": "build/index.html" }
+    { "src": "/service-worker.js", "dest": "service-worker.js" },
+    { "src": "/manifest.json", "dest": "manifest.json" },
+    { "src": "/static/(.*)", "dest": "static/$1" },
+    { "src": "/(.*)", "dest": "index.html" }
   ]
 }
