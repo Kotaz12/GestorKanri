@@ -25,14 +25,14 @@ export default function ProcedureTypes() {
 
     const { data: types = [] } = useQuery({
         queryKey: ["types"],
-        queryFn: async () => (await api.get("/types")).data,
+        queryFn: async () => (await api.get("/api/types")).data,
     });
 
     const save = useMutation({
         mutationFn: async (data) => {
             const payload = { ...data, response_days: Number(data.response_days) };
-            if (editing) return (await api.put(`/types/${editing}`, payload)).data;
-            return (await api.post("/types", payload)).data;
+            if (editing) return (await api.put(`/api/types/${editing}`, payload)).data;
+            return (await api.post("/api/types", payload)).data;
         },
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["types"] });
@@ -44,7 +44,7 @@ export default function ProcedureTypes() {
         onError: (e) => toast.error(formatError(e)),
     });
     const remove = useMutation({
-        mutationFn: async (id) => (await api.delete(`/types/${id}`)).data,
+        mutationFn: async (id) => (await api.delete(`/api/types/${id}`)).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["types"] });
             toast.success("Tipo eliminado");
