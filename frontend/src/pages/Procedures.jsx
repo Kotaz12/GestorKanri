@@ -42,23 +42,23 @@ export default function Procedures() {
 
     const { data: procedures = [], isLoading } = useQuery({
         queryKey: ["procedures"],
-        queryFn: async () => (await api.get("/api/procedures")).data,
+        queryFn: async () => (await api.get("/api/auth/procedures")).data,
     });
     const { data: clients = [] } = useQuery({
         queryKey: ["clients"],
-        queryFn: async () => (await api.get("/api/clients")).data,
+        queryFn: async () => (await api.get("/api/auth/clients")).data,
     });
     const { data: types = [] } = useQuery({
         queryKey: ["types"],
-        queryFn: async () => (await api.get("/api/types")).data,
+        queryFn: async () => (await api.get("/api/auth/types")).data,
     });
     const { data: deps = [] } = useQuery({
         queryKey: ["dependencies"],
-        queryFn: async () => (await api.get("/api/dependencies")).data,
+        queryFn: async () => (await api.get("/api/auth/dependencies")).data,
     });
     const { data: users = [] } = useQuery({
         queryKey: ["users"],
-        queryFn: async () => (await api.get("/api/users")).data,
+        queryFn: async () => (await api.get("/api/auth/users")).data,
     });
 
     const [form, setForm] = useState({
@@ -72,7 +72,7 @@ export default function Procedures() {
     });
 
     const create = useMutation({
-        mutationFn: async (data) => (await api.post("/api/procedures", data)).data,
+        mutationFn: async (data) => (await api.post("/api/auth/procedures", data)).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["procedures"] });
             qc.invalidateQueries({ queryKey: ["stats"] });

@@ -32,12 +32,12 @@ export default function Clients() {
 
     const { data: clients = [], isLoading } = useQuery({
         queryKey: ["clients"],
-        queryFn: async () => (await api.get("/api/clients")).data,
+        queryFn: async () => (await api.get("/api/auth/clients")).data,
     });
 
     const save = useMutation({
         mutationFn: async (data) => {
-            if (editing) return (await api.put(`/api/clients/${editing}`, data)).data;
+            if (editing) return (await api.put(`/api/auth/clients/${editing}`, data)).data;
             return (await api.post("/clients", data)).data;
         },
         onSuccess: () => {
@@ -51,7 +51,7 @@ export default function Clients() {
     });
 
     const remove = useMutation({
-        mutationFn: async (id) => (await api.delete(`/api/clients/${id}`)).data,
+        mutationFn: async (id) => (await api.delete(`/api/auth/clients/${id}`)).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["clients"] });
             toast.success("Cliente eliminado");

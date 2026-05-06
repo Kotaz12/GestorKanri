@@ -24,16 +24,16 @@ export default function ProcedureDetail() {
 
     const { data: p } = useQuery({
         queryKey: ["procedure", id],
-        queryFn: async () => (await api.get(`/api/procedures/${id}`)).data,
+        queryFn: async () => (await api.get(`/api/auth/procedures/${id}`)).data,
     });
     const { data: notes = [] } = useQuery({
         queryKey: ["procedure-notes", id],
-        queryFn: async () => (await api.get(`/api/procedures/${id}/notes`)).data,
+        queryFn: async () => (await api.get(`/api/auth/procedures/${id}/notes`)).data,
     });
 
     const addNote = useMutation({
         mutationFn: async (content) =>
-            (await api.post(`/api/procedures/${id}/notes`, { content })).data,
+            (await api.post(`/api/auth/procedures/${id}/notes`, { content })).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["procedure-notes", id] });
             setNote("");
@@ -43,7 +43,7 @@ export default function ProcedureDetail() {
     });
     const changeStatus = useMutation({
         mutationFn: async (status) =>
-            (await api.patch(`/api/procedures/${id}/status`, { status })).data,
+            (await api.patch(`/api/auth/procedures/${id}/status`, { status })).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["procedure", id] });
             qc.invalidateQueries({ queryKey: ["procedures"] });
@@ -53,7 +53,7 @@ export default function ProcedureDetail() {
         onError: (e) => toast.error(formatError(e)),
     });
     const remove = useMutation({
-        mutationFn: async () => (await api.delete(`/api/procedures/${id}`)).data,
+        mutationFn: async () => (await api.delete(`/api/auth/procedures/${id}`)).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["procedures"] });
             toast.success("Trámite eliminado");

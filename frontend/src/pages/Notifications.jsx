@@ -9,18 +9,18 @@ export default function Notifications() {
     const qc = useQueryClient();
     const { data: items = [], isLoading } = useQuery({
         queryKey: ["notifications"],
-        queryFn: async () => (await api.get("/api/notifications")).data,
+        queryFn: async () => (await api.get("/api/auth/notifications")).data,
     });
 
     const markOne = useMutation({
-        mutationFn: async (id) => (await api.post(`/api/notifications/${id}/read`)).data,
+        mutationFn: async (id) => (await api.post(`/api/auth/notifications/${id}/read`)).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["notifications"] });
             qc.invalidateQueries({ queryKey: ["unread-count"] });
         },
     });
     const markAll = useMutation({
-        mutationFn: async () => (await api.post(`/api/notifications/read-all`)).data,
+        mutationFn: async () => (await api.post(`/api/auth/notifications/read-all`)).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["notifications"] });
             qc.invalidateQueries({ queryKey: ["unread-count"] });

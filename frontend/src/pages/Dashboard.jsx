@@ -39,11 +39,11 @@ const KpiCard = ({ label, value, icon: Icon, color, testid }) => (
 export default function Dashboard() {
     const { data: stats } = useQuery({
         queryKey: ["stats"],
-        queryFn: async () => (await api.get("/api/procedures/stats")).data,
+        queryFn: async () => (await api.get("/api/auth/procedures/stats")).data,
     });
     const { data: procedures = [] } = useQuery({
         queryKey: ["procedures"],
-        queryFn: async () => (await api.get("/api/procedures")).data,
+        queryFn: async () => (await api.get("/api/auth/procedures")).data,
     });
 
     const recent = procedures.slice(0, 8);

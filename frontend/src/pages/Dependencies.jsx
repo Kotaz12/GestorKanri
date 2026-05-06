@@ -25,13 +25,13 @@ export default function Dependencies() {
 
     const { data: deps = [] } = useQuery({
         queryKey: ["dependencies"],
-        queryFn: async () => (await api.get("/api/dependencies")).data,
+        queryFn: async () => (await api.get("/api/auth/dependencies")).data,
     });
 
     const save = useMutation({
         mutationFn: async (data) => {
-            if (editing) return (await api.put(`/api/dependencies/${editing}`, data)).data;
-            return (await api.post("/api/dependencies", data)).data;
+            if (editing) return (await api.put(`/api/auth/dependencies/${editing}`, data)).data;
+            return (await api.post("/api/auth/dependencies", data)).data;
         },
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["dependencies"] });
@@ -43,7 +43,7 @@ export default function Dependencies() {
         onError: (e) => toast.error(formatError(e)),
     });
     const remove = useMutation({
-        mutationFn: async (id) => (await api.delete(`/api/dependencies/${id}`)).data,
+        mutationFn: async (id) => (await api.delete(`/api/auth/dependencies/${id}`)).data,
         onSuccess: () => {
             qc.invalidateQueries({ queryKey: ["dependencies"] });
             toast.success("Dependencia eliminada");
