@@ -3,14 +3,9 @@ import os
 import sys
 from pathlib import Path
 
-# En Vercel el working directory es la raíz del repo
-# __file__ = /var/task/api/index.py  →  parent.parent = /var/task
+# Agregar la raíz del proyecto al path para encontrar la carpeta 'backend'
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.append(str(ROOT))
-"""BACKEND = ROOT / "backend"
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
 
-if str(BACKEND) not in sys.path:
-    sys.path.insert(0, str(BACKEND))"""
-
-"""from server import app  # noqa: E402"""
 from backend.server import app

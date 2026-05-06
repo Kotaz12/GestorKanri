@@ -60,7 +60,7 @@ api.include_router(procedures_router.router)
 api.include_router(notifications_router.router)
 api.include_router(init_router.router)
 
-app.include_router(api)
+app.include_router(api, prefix="/api")
 
 # CORS — allow credentials; allow any preview origin.
 origins_env = os.environ.get("CORS_ORIGINS", "*").strip()
