@@ -3,9 +3,14 @@ import os
 import sys
 from pathlib import Path
 
-# Agregar la raíz del proyecto al path para encontrar la carpeta 'backend'
+# Configurar el path para que encuentre la carpeta 'backend'
 ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
+
+# Definir la variable BACKEND para evitar el NameError
+BACKEND = ROOT / "backend"
+if str(BACKEND) not in sys.path:
+    sys.path.insert(0, str(BACKEND))
 
 from backend.server import app
