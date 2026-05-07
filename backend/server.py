@@ -12,12 +12,12 @@ from fastapi import FastAPI, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 
 from backend import db
-from routers import auth as auth_router
-from routers import clients as clients_router
-from routers import catalogs as catalogs_router
-from routers import procedures as procedures_router
-from routers import notifications as notifications_router
-from routers import init_data as init_router
+from backend.routers import auth as auth_router
+from backend.routers import clients as clients_router
+from backend.routers import catalogs as catalogs_router
+from backend.routers import procedures as procedures_router
+from backend.routers import notifications as notifications_router
+from backend.routers import init_data as init_router
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger("kanri")
