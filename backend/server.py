@@ -11,7 +11,7 @@ load_dotenv(ROOT_DIR / ".env")
 from fastapi import FastAPI, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 
-import db
+from backend import db
 from routers import auth as auth_router
 from routers import clients as clients_router
 from routers import catalogs as catalogs_router
